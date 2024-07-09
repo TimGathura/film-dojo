@@ -1,0 +1,82 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* This file is for your main application CSS */
+@font-face {
+    font-family: 'ZenzaiItacha';
+    src: url('/fonts/ZenzaiItacha-vElZ.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+  
+@font-face {
+    font-family: 'ZenzaiItache';
+    src: url('/fonts/ZenzaiItache-wEn2.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+  
+@font-face {
+    font-family: 'ZenzaiItachi';
+    src: url('/fonts/ZenzaiItachi-70nE.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Blacknorth';
+    src: url('/fonts/Blacknorthdemo-mLE25.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* Custom Tailwind attributes */
+.custom-background {
+    background-image: url(/images/kingdomapes_bg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.w-cust {
+    width: 45%;
+}
+
+.w-title {
+    width: 95%;
+}
+
+.max-h-img {
+    max-width: 200px;
+}
+
+.h-active {
+    width: 200px;
+}
+
+.h-inactive {
+    width: 180px;
+}
+
+.text-nav {
+    font-size: 16px;
+}
+
+.h-nav {
+    height: 80px;
+}
+
+.h-cont {
+    height: 50%;
+}
+
+.h-card {
+    height: 30%;
+}
