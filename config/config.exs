@@ -64,3 +64,17 @@ config :phoenix, :json_library, Jason
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"
+
+
+
+
+
+# < < < Custom configs > > >
+config :mime, :types, %{
+  "video/mp4" => ["mp4"],
+  "video/quicktime" => ["mov"],
+  "video/x-msvideo" => ["avi"]
+}
+
+config :phoenix, :endpoint,
+http: [protocol_options: [max_request_line_length: 8192, max_header_value_length: 8192]]

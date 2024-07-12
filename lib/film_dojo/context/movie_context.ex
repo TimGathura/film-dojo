@@ -19,6 +19,12 @@ defmodule FilmDojo.Context.MovieContext do
   end
 
   def update_movie(%Movie{} = movie, attrs) do
+    # Only delete old files if new ones are uploaded
+    if Map.has_key?(attrs, "poster_path"), do: delete_file(movie.poster_path)
+    if Map.has_key?(attrs, "background_path"), do: delete_file(movie.background_path)
+    if Map.has_key?(attrs, "trailer_path"), do: delete_file(movie.trailer_path)
+    if Map.has_key?(attrs, "movie_path"), do: delete_file(movie.movie_path)
+
     movie
     |> Movie.changeset(attrs)
     |> Repo.update()
@@ -32,6 +38,24 @@ defmodule FilmDojo.Context.MovieContext do
     %Movie{}
     |> Movie.changeset(attrs)
     |> Repo.insert()
+  end
+
+  def delete_movie(%Movie{} = movie) do
+    # Delete associated files
+    delete_file(movie.poster_path)
+    delete_file(movie.background_path)
+    delete_file(movie.trailer_path)
+    delete_file(movie.movie_path)
+
+    # Delete the database record
+    Repo.delete(movie)
+  end
+
+  defp delete_file(nil), do: :ok
+  defp delete_file(path) do
+    path
+    |> String.trim_leading("/")
+    |> File.rm()
   end
 
 end

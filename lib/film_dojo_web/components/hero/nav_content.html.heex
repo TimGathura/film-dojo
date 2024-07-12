@@ -1,0 +1,23 @@
+<!-- NavBar -->
+<div id="main_nav" class="flex items-center justify-between text-white h-nav">
+
+  <div id="logo" class="font-zenzaiItachi text-5xl text-red-500 ml-16">
+    <p> Film Dojo </p>
+  </div>
+
+
+  <div id="home" class="flex items-center justify-between mr-16">
+    <ul class="flex items-center justify-between gap-12 text-nav">
+      <.link navigate={~p"/"}>
+        <li> Home </li>
+      </.link>
+      <li> Genre </li>
+      <.link navigate={~p"/upload"}>
+        <li>  Upload </li>
+      </.link>
+      <li> TV Shows </li>
+      <li> Search </li>
+      <li> Logout </li>
+    </ul>
+  </div>
+</div>

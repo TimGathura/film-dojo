@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>FilmDojo</title>
+    <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"}/>
+    <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}></script>
+  </head>
+  <body>
+    <header>
+      <!-- NavBar -->
+      <div id="main_nav" class="flex items-center justify-between text-black h-nav">
+
+        <div id="logo" class="font-zenzaiItachi text-5xl text-red-500 ml-16">
+          <p> Film Dojo </p>
+        </div>
+
+
+        <div id="home" class="flex items-center justify-between mr-16">
+          <ul class="flex items-center justify-between gap-12 text-nav">
+            <.link navigate={~p"/"}>
+              <li> Home </li>
+            </.link>
+            <li> Genre </li>
+            <.link navigate={~p"/upload"}>
+              <li>  Upload </li>
+            </.link>
+            <li> TV Shows </li>
+            <li> Search </li>
+            <li> Logout </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+
+    <div class="w-full px-4 py-20 sm:px-6 lg:px-8 mx-auto max-w-2xl">
+        <.flash_group flash={@flash} />
+        <%= @inner_content %>
+    </div>
+    
+  </body>
+</html>

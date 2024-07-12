@@ -39,6 +39,7 @@ npm-debug.log
 # Ignore consumed and static assets
 /priv/static/uploads
 /priv/static/images
+/uploads/
 
 # Ignore .elixir_ls
 /.elixir_ls/** 

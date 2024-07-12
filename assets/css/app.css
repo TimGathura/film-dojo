@@ -31,6 +31,14 @@
     font-style: normal;
 }
 
+/* .custom-background {
+    background-image: url(/images/kingdomapes_bg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+} */
+
+
+/* Custom Tailwind attributes */
 html, body {
     height: 100%;
     margin: 0;
@@ -38,12 +46,7 @@ html, body {
     width: 100%;
 }
 
-/* Custom Tailwind attributes */
-.custom-background {
-    background-image: url(/images/kingdomapes_bg.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-}
+
 
 .w-cust {
     width: 45%;
@@ -79,4 +82,14 @@ html, body {
 
 .h-card {
     height: 30%;
+}
+
+#movie-carousel {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+}
+  
+.movie-card {
+    transition: transform 0.3s ease-in-out, visibility 0.3s, opacity 0.3s;
+    flex: 0 0 auto;
 }
