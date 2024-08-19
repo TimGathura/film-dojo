@@ -8,10 +8,4 @@ let Hooks = {
   InfiniteScroll: InfiniteScrollHook,
 }
 
-Hooks.ChunkedUpload = {
-  mounted() {
-    ChunkedUploader.init(this.el, this.pushEvent.bind(this))
-  }
-}
-
 export default Hooks;

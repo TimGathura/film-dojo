@@ -1,60 +1,33 @@
-defmodule FilmDojoWeb.HeroLive do
+defmodule FilmDojoWeb.MovieInfoLive do
   use FilmDojoWeb, :hero_view
 
   alias FilmDojo.Context.MovieContext
 
-  import FilmDojoWeb.Components.Hero
+  import FilmDojoWeb.Components.MovieInfo
   import FilmDojoWeb.Components.Nav
 
-  @default_movie %{
-    id: nil,
-    title: "Welcome to Film Dojo",
-    description: "Start by adding your first movie!",
-    background_path: "/images/Gojo_bg.png",
-    poster_path: "/images/default_poster.jpg"
-  }
-
-
   @impl true
-  def mount(_params, _session, socket) do
-    movies = MovieContext.list_movies()
-    current_movie = List.first(movies) || @default_movie
-    {:ok, assign(socket, movies: movies, current_movie: current_movie, show_trailer: false)}
-    #{:ok, socket, layout: {FilmDojoWeb.Layouts, :hero}}
+  def mount(%{"id" => id}, _session, socket) do
+    movie = MovieContext.get_movie!(id)
+    {:ok, assign(socket, movie: movie, show_trailer: false)}
   end
 
   @impl true
-  def handle_event("select_movie", %{"id" => id}, socket) do
-    case MovieContext.get_movie!(id) do
-      nil ->
-        {:noreply, socket}
-      movie ->
-        {:noreply, socket
-          |> assign(current_movie: movie)
-          |> push_event("movie-selected", %{})}
-        # {:noreply, assign(socket, current_movie: movie)}
-    end
-  end
-
   def handle_event("show_trailer", _params, socket) do
     {:noreply, assign(socket, show_trailer: true)}
   end
 
+  @impl true
   def handle_event("close_trailer", _params, socket) do
     {:noreply, assign(socket, show_trailer: false)}
   end
 
   @impl true
-  def handle_event("navigate_to_info", %{"id" => id}, socket) do
-    {:noreply, push_navigate(socket, to: ~p"/movie/#{id}")}
-  end
-
-  @impl true
   def render(assigns) do
     ~H"""
-    <div id="main" class="h-screen overflow-y-hidden w-full" style={"background-image: url(#{@current_movie.background_path || "/images/Gojo_bg.png"}); background-size: cover; background-repeat: no-repeat;"}>
+    <div class="border border-black w-full h-screen text-black art-station-bg">
       <.nav_content />
-      <.hero_content current_movie={@current_movie} movies={@movies} />
+      <.movie_info_content movie={@movie} show_trailer={@show_trailer}/>
 
       <%= if @show_trailer do %>
         <div class="fixed z-50 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -66,11 +39,11 @@ defmodule FilmDojoWeb.HeroLive do
                 <div class="sm:flex sm:items-start">
                   <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
                     <h3 class="text-lg leading-6 font-medium text-white" id="modal-title">
-                      <%= @current_movie.title %> - Trailer
+                      <%= @movie.title %> - Trailer
                     </h3>
                     <div class="mt-2">
                       <video controls class="w-full">
-                        <source src={@current_movie.trailer_path} type="video/mp4">
+                        <source src={@movie.trailer_path} type="video/mp4">
                         Your browser does not support the video tag.
                       </video>
                     </div>
@@ -90,5 +63,4 @@ defmodule FilmDojoWeb.HeroLive do
 
     """
   end
-
 end

@@ -21,9 +21,20 @@ defmodule FilmDojo.Schema.Movie do
   def changeset(movie, attrs) do
     movie
     |> cast(attrs, [:title, :description, :poster_path, :background_path, :ratings, :year, :duration, :genre, :trailer_path, :movie_path])
-    |> validate_required([:title, :description, :poster_path, :background_path, :ratings, :year, :duration, :genre])
+    |> validate_required([:title, :description, :ratings, :year, :duration, :genre])
     |> validate_number(:ratings, greater_than_or_equal_to: 0, less_than_or_equal_to: 10)
     |> validate_number(:year, greater_than_or_equal_to: 1888) # First movie ever made
     |> validate_length(:description, max: 500)
+    |> validate_file_paths([:poster_path, :background_path, :trailer_path, :movie_path])
+  end
+
+  defp validate_file_paths(changeset, fields) do
+    Enum.reduce(fields, changeset, fn field, acc ->
+      if get_change(acc, field) do
+        validate_required(acc, [field])
+      else
+        acc
+      end
+    end)
   end
 end

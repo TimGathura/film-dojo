@@ -2,6 +2,24 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+:root {
+    --artstation-colour: #101014;
+    --content-height: calc(100vh - 80px);
+}
+  
+.art-station {
+    color: var(--artstation-colour);
+}
+  
+  /* You can also use it for other properties */
+.art-station-bg {
+    background-color: var(--artstation-colour);
+}
+
+.h-content {
+    height: var(--content-height);
+}
+
 /* This file is for your main application CSS */
 @font-face {
     font-family: 'ZenzaiItacha';
@@ -92,4 +110,31 @@ html, body {
 .movie-card {
     transition: transform 0.3s ease-in-out, visibility 0.3s, opacity 0.3s;
     flex: 0 0 auto;
+}
+
+.movie-info {
+    background-image: url(/images/BG-FilmInfo.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.cont-60 {
+    height: 60%;
+}
+
+.image-cont {
+    height: 100%; /* Make sure the image container takes full height of its parent */
+}
+
+.img {
+    height: 100%; /* Make sure image is height of its container */
+    object-fit: contain; /* This ensures the entire image is visible */
 }

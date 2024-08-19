@@ -58,6 +58,33 @@ defmodule FilmDojoWeb do
     end
   end
 
+  def hero_view do
+    quote do
+      use Phoenix.LiveView,
+        layout: {FilmDojoWeb.Layouts, :hero}
+
+      unquote(html_helpers())
+    end
+  end
+
+
+  def nav_layout do
+    quote do
+      use Phoenix.LiveView,
+        layout: {FilmDojoWeb.Layouts, :nav_layout}
+
+      unquote(html_helpers())
+    end
+  end
+
+  def nav_player do
+    quote do
+      use Phoenix.LiveView,
+        layout: {FilmDojoWeb.Layouts, :nav_player}
+      unquote(html_helpers())
+    end
+  end
+
   def live_component do
     quote do
       use Phoenix.LiveComponent

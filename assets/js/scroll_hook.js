@@ -18,8 +18,8 @@ let ScrollHook = {
     if (this.scrollLeftButton && this.scrollRightButton && this.carousel) {
       this.updateButtonVisibility();
 
-      this.scrollLeftButton.addEventListener("click", () => this.scroll(-200));
-      this.scrollRightButton.addEventListener("click", () => this.scroll(200));
+      this.scrollLeftButton.addEventListener("click", () => this.scroll(-250));
+      this.scrollRightButton.addEventListener("click", () => this.scroll(250));
 
       this.carousel.addEventListener("scroll", () => this.updateButtonVisibility());
 

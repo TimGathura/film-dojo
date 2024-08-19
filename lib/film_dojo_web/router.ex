@@ -21,7 +21,8 @@ defmodule FilmDojoWeb.Router do
     live "/", HeroLive
     live "/upload", MovieUploadLive
     live "/edit/:id", MovieEditLive
-    live "play/:id", MoviePlayerLive
+    live "/play/:id", MoviePlayerLive
+    live "/movie/:id", MovieInfoLive
   end
 
 

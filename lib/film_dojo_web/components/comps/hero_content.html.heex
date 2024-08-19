@@ -31,66 +31,17 @@
     </div>
 
     <div id="buttons" class="pt-8 flex items-center gap-4 border-white">
-      <button type="button" phx-click="show_trailer" class="border border-white rounded-lg py-2 px-4"> Watch trailer </button>
+      <button type="button" phx-click="navigate_to_info" phx-value-id={@current_movie.id} class="border border-white rounded-lg py-2 px-4">
+         More Info
+      </button>
+
       <.link navigate={~p"/play/#{@current_movie.id}"} class="flex items-center gap-2 rounded-lg bg-red-500 py-2 px-4 text-black">
         <img src={~p"/images/play.png"} width="24"/>
         Watch now
       </.link>
     </div>
 
-    <!-- <div id="pagenation" class="flex items-center gap-4 pt-12">
-      <button type="button" class="border border-white rounded-lg p-4">
-        <img src={~p"/images/left_arrow.png"} width="15" />
-      </button>
-      <button type="button" class="border border-white rounded-lg p-4">
-        <img src={~p"/images/right_arrow.png"} width="15" />
-      </button>
-    </div> -->
-
   </div>
-
-  <!--
-  <div id="card-cont" class="flex items-center gap-4 mt-24 h-card overflow-x-auto whitespace-nowrap px-4">
-    <%= if  Enum.empty?(@movies) do %>
-      <p class="text-white"> Looks like you dont got not movies. Add your first to get started! </p>
-    <% else %>
-      <%= for _movie <- @movies do %>
-        <div id="card" class="flex items-center max-h-img" phx-click="select_movie" phx-value-id={movie.id}>
-          <img src={movie.poster_path} class={["rounded-lg", @current_movie.id == movie.id && "h-active" || "h-inactive"]} />
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-  -->
-
-
-  <!--
-  <div class="relative">
-    <div id="movie-carousel" class="flex overflow-x-hidden scroll-smooth px-4 mt-16">
-      <%= if Enum.empty?(@movies) do %>
-        <p class="text-center w-full">Looks like you don't have any movies. Add your first to get started!</p>
-      <% else %>
-        <%= for movie <- @movies ++ @movies ++ @movies do %>
-          <div class="flex-shrink-0 w-48 m-2">
-             Your movie card content here
-            <div id="card" class="flex items-center max-h-img" phx-click="select_movie" phx-value-id={movie.id}>
-              <img src={movie.poster_path} class={["rounded-lg shadow-lg", @current_movie.id == movie.id && "h-active" || "h-inactive"]} />
-            </div>
-             <img src={movie.poster_path} alt={movie.title} class="w-full h-auto rounded-lg shadow-lg">
-            <p class="mt-2 text-sm font-semibold"><%= movie.title %></p>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-
-    <button id="scroll-left" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-r-lg hidden">
-      &lt;
-    </button>
-    <button id="scroll-right" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-l-lg hidden">
-      &gt;
-    </button>
-  </div>
-  -->
 
 
   <div id="scrollable-content" phx-hook="Scroll" class="relative">

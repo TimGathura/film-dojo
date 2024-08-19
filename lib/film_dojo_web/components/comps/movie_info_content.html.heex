@@ -1,0 +1,100 @@
+<div id="main" class="border border-white w-full h-content text-black" >
+    <div id="top-cont" class="border border-white flex justify-center items-center gap-16 mx-24 mt-12 cont-60 art-station-bg">
+        <div id="image-cont" class="border border-black image-cont">
+            <img src={@movie.poster_path} alt={@movie.title} class="img rounded-lg shadow-lg"/>
+        </div>
+        <div id="text-cont" class="border border-red-500 flex-col justify-between image-cont w-50 text-white">
+            <div>
+                <h1 class="text-4xl font-blacknorth font-bold mb-5"><%= @movie.title %></h1>
+                <p class="mb-4 text-xl"> <%= @movie.description %> </p>
+                <p class="mb-2"><strong>Duration:</strong> <%= @movie.duration %></p>
+                <p class="mb-2"><strong>Genre:</strong> <%= @movie.genre %></p>
+                <p class="mb-2"><strong>Year:</strong> <%= @movie.year %></p>
+                <p class="mb-4"><strong>Rating:</strong> <%= @movie.ratings %></p>    
+            </div>
+            <div id="buttons" class="flex gap-4">
+                <button phx-click="show_trailer" class="bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 transition duration-300">
+                  Watch Trailer
+                </button>
+                <.link navigate={~p"/play/#{@movie.id}"} class="flex items-center gap-2 rounded-lg bg-red-500 py-2 px-4 text-black">
+                  <img src={~p"/images/play.png"} width="24"/>
+                  Watch now
+                </.link>
+            </div>
+        </div>
+    </div>
+
+    <div id="cast-cont" class="border border-white h-80">
+        cast-cont
+        <p> Cast </p>
+        <div id="cast">
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+<!--
+<div class="container mx-auto mt-10 text-white">
+    <h1 class="text-4xl text-black font-bold mb-5"><%= @movie.title %></h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div>
+        <img src={@movie.poster_path} alt={@movie.title} class="w-full rounded-lg shadow-lg"/>
+      </div>
+      <div class="text-black">
+        <p class="text-xl mb-4"><%= @movie.description %></p>
+        <p class="mb-2"><strong>Duration:</strong> <%= @movie.duration %></p>
+        <p class="mb-2"><strong>Genre:</strong> <%= @movie.genre %></p>
+        <p class="mb-2"><strong>Year:</strong> <%= @movie.year %></p>
+        <p class="mb-4"><strong>Rating:</strong> <%= @movie.ratings %></p>
+
+        <div id="buttons" class="flex gap-4">
+          <button phx-click="show_trailer" class="bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 transition duration-300">
+            Watch Trailer
+          </button>
+          <.link navigate={~p"/play/#{@movie.id}"} class="flex items-center gap-2 rounded-lg bg-red-500 py-2 px-4 text-black">
+            <img src={~p"/images/play.png"} width="24"/>
+            Watch now
+          </.link>
+        </div>
+      </div>
+    </div>
+
+    <%= if @show_trailer do %>
+      <div class="fixed z-50 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+          <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+          <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+          <div class="inline-block align-bottom bg-black rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+            <div class="bg-black px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+              <div class="sm:flex sm:items-start">
+                <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
+                  <h3 class="text-lg leading-6 font-medium text-white" id="modal-title">
+                    <%= @movie.title %> - Trailer
+                  </h3>
+                  <div class="mt-2">
+                    <video controls class="w-full">
+                      <source src={@movie.trailer_path} type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-black px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+              <button type="button" phx-click="close_trailer" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+-->
